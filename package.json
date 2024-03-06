@@ -7,7 +7,8 @@
     "slugify": "^1.6.6"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "npm run build"
   },
   "name": "mini",
   "version": "1.0.0",
