@@ -10,7 +10,7 @@ connectDb();
 app.use(express.json());
 
 app.get('/', (req, res) => {
-   res.send('<h1>Welcome to Todo API<h1/>');
+   res.send('<h1>Welcome to Todo API<h1>');
 });
 
 app.get('/get_todo', async (req, res) => {
