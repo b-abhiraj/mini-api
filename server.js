@@ -70,9 +70,9 @@ app.delete('/delete_todo/:id', async (req, res) => {
 
 app.put('/update_todo/:id', async (req, res) => {
    try {
-      const { title,desc } = req.body
+      const { title, desc } = req.body
       const { id } = req.params
-      const note = await noteModel.findByIdAndUpdate(id, { title,desc, slug: slugify(title,desc) }, { new: true })
+      const note = await noteModel.findByIdAndUpdate(id, { title, desc, slug: slugify(title, desc) }, { new: true })
       res.status(200).send({
          success: true,
          message: 'note updated successfully!',

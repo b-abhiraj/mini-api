@@ -8,13 +8,11 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "netlifyFunctions": "netlify-lambda serve functions"
+    "start": "node server.js"
     },
   "name": "mini",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "author": "",
   "license": "ISC",
   "description": "",
