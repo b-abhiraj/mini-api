@@ -5,7 +5,7 @@ import noteModel from "./models/noteModel.js";
 import slugify from "slugify";
 
 const app = express();
-dotenv.config();
+dotenv.config({path:'.env'});
 app.use(express.json());
 
 connectDb();
