@@ -8,85 +8,85 @@ const app = express();
 dotenv.config();
 app.use(express.json());
 
-connectDb();
-app.get('/', (req, res) => {
-   res.send('<h1>Welcome to Todo API<h1>');
-});
+// connectDb();
+// app.get('/', (req, res) => {
+//    res.send('<h1>Welcome to Todo API<h1>');
+// });
 
-app.get('/get_todo', async (req, res) => {
-   try {
-      const notes = await noteModel.find({})
-      return res.status(200).send({
-         success: true,
-         message: 'All Notes',
-         notes,
-      })
-   } catch (error) {
-      console.log(error);
-      res.status(500).send({
-         success: false,
-         message: 'Error while fetching notes',
-         error
-      })
-   }
-});
+// app.get('/get_todo', async (req, res) => {
+//    try {
+//       const notes = await noteModel.find({})
+//       return res.status(200).send({
+//          success: true,
+//          message: 'All Notes',
+//          notes,
+//       })
+//    } catch (error) {
+//       console.log(error);
+//       res.status(500).send({
+//          success: false,
+//          message: 'Error while fetching notes',
+//          error
+//       })
+//    }
+// });
 
-app.post('/post_todo', async (req, res) => {
-   try {
-      const { title, desc } = req.body;
-      const note = await new noteModel({ title, desc, slug: slugify(title, desc) }).save();
-      res.status(201).send({
-         success: true,
-         message: 'New Note Registered',
-         note
-      })
-   } catch (error) {
-      console.log(error)
-      res.status(500).send({
-         success: false,
-         message: 'Error in Category',
-         error
-      })
-   }
-})
+// app.post('/post_todo', async (req, res) => {
+//    try {
+//       const { title, desc } = req.body;
+//       const note = await new noteModel({ title, desc, slug: slugify(title, desc) }).save();
+//       res.status(201).send({
+//          success: true,
+//          message: 'New Note Registered',
+//          note
+//       })
+//    } catch (error) {
+//       console.log(error)
+//       res.status(500).send({
+//          success: false,
+//          message: 'Error in Category',
+//          error
+//       })
+//    }
+// })
 
-app.delete('/delete_todo/:id', async (req, res) => {
-   try {
-      const { id } = req.params;
-      await noteModel.findByIdAndDelete(id)
-      res.status(200).send({
-         success: true,
-         message: 'Deleted Successfully'
-      })
-   } catch (error) {
-      console.log(error)
-      res.status(500).send({
-         success: false,
-         message: 'Error In Delete note',
-         error
-      })
-   }
-})
+// app.delete('/delete_todo/:id', async (req, res) => {
+//    try {
+//       const { id } = req.params;
+//       await noteModel.findByIdAndDelete(id)
+//       res.status(200).send({
+//          success: true,
+//          message: 'Deleted Successfully'
+//       })
+//    } catch (error) {
+//       console.log(error)
+//       res.status(500).send({
+//          success: false,
+//          message: 'Error In Delete note',
+//          error
+//       })
+//    }
+// })
 
-app.put('/update_todo/:id', async (req, res) => {
-   try {
-      const { title, desc } = req.body
-      const { id } = req.params
-      const note = await noteModel.findByIdAndUpdate(id, { title, desc, slug: slugify(title, desc) }, { new: true })
-      res.status(200).send({
-         success: true,
-         message: 'note updated successfully!',
-         note
-      })
-   } catch (error) {
-      console.log(error);
-      res.status(500).send({
-         success: false,
-         message: 'Error in update',
-         error
-      })
-   }
-})
+// app.put('/update_todo/:id', async (req, res) => {
+//    try {
+//       const { title,desc } = req.body
+//       const { id } = req.params
+//       const note = await noteModel.findByIdAndUpdate(id, { title,desc, slug: slugify(title,desc) }, { new: true })
+//       res.status(200).send({
+//          success: true,
+//          message: 'note updated successfully!',
+//          note
+//       })
+//    } catch (error) {
+//       console.log(error);
+//       res.status(500).send({
+//          success: false,
+//          message: 'Error in update',
+//          error
+//       })
+//    }
+// })
 
 const PORT = 4000;
 app.listen(PORT, () => {
