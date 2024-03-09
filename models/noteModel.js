@@ -6,9 +6,12 @@ const noteModel = new mongoose.Schema({
        required: true,
        trim: false
    },
-   desc: {
+   description: {
        type: String,
        required: true,
+   },
+   is_completed:{
+    type:Boolean
    }
 }, { timestamps: true })
 

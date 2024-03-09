@@ -15,11 +15,11 @@ app.get('/', (req, res) => {
 
 app.get('/get_todo', async (req, res) => {
    try {
-      const notes = await noteModel.find({})
+      const items = await noteModel.find({})
       return res.status(200).send({
          success: true,
          message: 'All Notes',
-         notes,
+         items,
       })
    } catch (error) {
       console.log(error);
@@ -34,11 +34,11 @@ app.get('/get_todo', async (req, res) => {
 app.post('/post_todo', async (req, res) => {
    try {
       const { title, desc } = req.body;
-      const note = await new noteModel({ title, desc, slug: slugify(title, desc) }).save();
+      const items = await new noteModel({ title, desc, slug: slugify(title, desc) }).save();
       res.status(201).send({
          success: true,
          message: 'New Note Registered',
-         note
+         items
       })
    } catch (error) {
       console.log(error)
@@ -72,11 +72,11 @@ app.put('/update_todo/:id', async (req, res) => {
    try {
       const { title,desc } = req.body
       const { id } = req.params
-      const note = await noteModel.findByIdAndUpdate(id, { title,desc, slug: slugify(title,desc) }, { new: true })
+      const items = await noteModel.findByIdAndUpdate(id, { title,desc, slug: slugify(title,desc) }, { new: true })
       res.status(200).send({
          success: true,
          message: 'note updated successfully!',
-         note
+         items
       })
    } catch (error) {
       console.log(error);
