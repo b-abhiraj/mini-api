@@ -34,7 +34,7 @@ app.get('/get_todo', async (req, res) => {
 app.post('/post_todo', async (req, res) => {
    try {
       const { title, description } = req.body;
-      const items = await new noteModel({ title, description, slug: slugify(title, desc) }).save();
+      const items = await new noteModel({ title, description, slug: slugify(title, description) }).save();
       res.status(201).send({
          success: true,
          message: 'New Note Registered',
@@ -72,7 +72,7 @@ app.put('/update_todo/:id', async (req, res) => {
    try {
       const { title,description } = req.body
       const { id } = req.params
-      const items = await noteModel.findByIdAndUpdate(id, { title,description, slug: slugify(title,desc) }, { new: true })
+      const items = await noteModel.findByIdAndUpdate(id, { title,description, slug: slugify(title,description) }, { new: true })
       res.status(200).send({
          success: true,
          message: 'note updated successfully!',
