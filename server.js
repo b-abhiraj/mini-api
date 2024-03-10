@@ -72,7 +72,7 @@ app.put('/update_todo/:id', async (req, res) => {
    try {
       const { title,description } = req.body
       const { id } = req.params
-      const items = await noteModel.findByIdAndUpdate(id, { title,description, slug: slugify(title,description) }, { new: true })
+      const items = await noteModel.findByIdAndUpdate(id, { title,description }, { new: true })
       res.status(200).send({
          success: true,
          message: 'note updated successfully!',
